@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="2025-01-20Beadando.css">
+    <title>Courses</title>
+</head>
+<body>
+    <header>
+        <h1>Courses and Students Management</h1>
+    </header>
+
+    <main>
+        <!-- Course Section -->
+        <section class="section" id="course-section">
+            <h2>Manage Courses</h2>
+            <button class="stylish-button" onclick="showCourseForm()">Add New Course</button>
+            <div id="course-list" class="list"></div>
+        </section>
+    
+        <!-- Student Section -->
+        <section class="section" id="student-section">
+            <h2>Manage Students</h2>
+            <button class="stylish-button" onclick="showStudentForm()">Add New Student</button>
+            <div id="student-list" class="list"></div>
+        </section>
+    </main>
+    
+
+    <div id="form-container" class="form-container">
+        <div class="form">
+            <h3 id="form-title"></h3>
+            <label for="name">Name</label>
+            <input type="text" id="name">
+            <label for="description">Description</label>
+            <textarea id="description"></textarea>
+            <button id="submit-btn">Submit</button>
+            <button onclick="closeForm()">Cancel</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Course Platform</p>
+    </footer>
+    <script src="2025-01-20Beadando.js"></script>
+</body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="2025-01-20Beadando.css">
-    <title>Courses</title>
+    <title>Courses and Students Management</title>
 </head>
 <body>
     <header>
@@ -12,37 +12,39 @@
     </header>
 
     <main>
-        <!-- Course Section -->
+        <nav class="nav-buttons">
+            <button class="stylish-button" onclick="showList('courses')">View Courses</button>
+            <button class="stylish-button" onclick="showList('students')">View Students</button>
+        </nav>
+    
         <section class="section" id="course-section">
             <h2>Manage Courses</h2>
             <button class="stylish-button" onclick="showCourseForm()">Add New Course</button>
-            <div id="course-list" class="list"></div>
+            <div id="courses-list" class="list"></div>
         </section>
     
-        <!-- Student Section -->
         <section class="section" id="student-section">
             <h2>Manage Students</h2>
             <button class="stylish-button" onclick="showStudentForm()">Add New Student</button>
-            <div id="student-list" class="list"></div>
+            <div id="students-list" class="list"></div>
         </section>
     </main>
     
-
+    
     <div id="form-container" class="form-container">
         <div class="form">
-            <h3 id="form-title"></h3>
+            <h3 id="form-title">Form Title</h3>
             <label for="name">Name</label>
-            <input type="text" id="name">
-            <label for="description">Description</label>
-            <textarea id="description"></textarea>
-            <button id="submit-btn">Submit</button>
-            <button onclick="closeForm()">Cancel</button>
+            <input type="text" id="name" placeholder="Enter name" />
+            <button id="submit-btn" class="form-button">Submit</button>
+            <button class="form-button cancel-button" onclick="closeForm()">Cancel</button>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Course Platform</p>
+        <p>&copy; 2025 Courses and Students Management Platform</p>
     </footer>
+
     <script src="2025-01-20Beadando.js"></script>
 </body>
 </html>

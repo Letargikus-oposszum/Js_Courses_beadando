@@ -8,8 +8,9 @@
 /* Body and Background */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
     color: #333;
+    line-height: 1.6;
 }
 
 /* Header */
@@ -18,24 +19,42 @@ header {
     color: white;
     text-align: center;
     padding: 20px;
+    margin-bottom: 20px;
 }
 
 header h1 {
     font-size: 2.5em;
-    margin-bottom: 10px;
 }
 
 /* Main Content */
 main {
+    max-width: 800px;
+    margin: auto;
     padding: 20px;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.nav-buttons .stylish-button {
+    margin: 0 10px;
 }
 
 /* Section Styles */
 .section {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    text-align: center;
 }
 
-/* List Styles */
+.section h2 {
+    font-size: 1.8em;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
 .list {
     margin-top: 20px;
 }
@@ -46,13 +65,32 @@ main {
     border-radius: 8px;
     margin-bottom: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-item p {
+    margin: 0;
 }
 
 .list-item button {
     margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
 }
 
-/* Form Styles */
+.list-item button:hover {
+    background-color: #388E3C;
+}
+
+/* Form Modal */
 .form-container {
     display: none;
     position: fixed;
@@ -69,39 +107,71 @@ main {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    width: 300px;
+    width: 90%;
+    max-width: 400px;
     text-align: center;
+}
+
+.form label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
 }
 
 .form input, .form textarea {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
 
+.form-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: #388E3C;
+}
+
+.cancel-button {
+    background-color: #f44336;
+}
+
+.cancel-button:hover {
+    background-color: #d32f2f;
+}
+
+/* Stylish Button */
 .stylish-button {
-    background-color: #ffffff; /* Primary blue color */
-    color: black; /* Text color */
-    border: 2px solid black; /* Remove default border */
-    border-radius: 8px; /* Rounded corners */
-    padding: 10px 20px; /* Space inside button */
-    font-size: 16px; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+    background-color: #ffffff;
+    color: black;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 10px;
 }
 
 .stylish-button:hover {
-    background-color: #8a8a8a; /* Darker blue on hover */
-    transform: translateY(-2px); /* Slight lift effect */
+    background-color: #8a8a8a;
+    transform: translateY(-2px);
 }
 
 .stylish-button:active {
-    background-color: #8a8a8a; /* Even darker blue on click */
-    transform: translateY(0); /* Reset lift effect */
+    transform: translateY(0);
 }
-
 
 /* Footer */
 footer {
@@ -109,9 +179,5 @@ footer {
     background-color: #333;
     color: white;
     padding: 15px;
-    margin-top: 20px;
-}
-
-footer p {
-    font-size: 1em;
+    margin-top: 40px;
 }

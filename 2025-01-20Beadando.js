@@ -49,7 +49,6 @@ async function showList(type) {
         if (type === "students") {
             div.innerHTML = `
                 <p><strong>${item.name}</strong></p>
-                <p>Courses: ${item.courses?.length || 0}</p>  <!-- Show number of courses -->
                 <button onclick="viewItem('${type}', ${item.id})">View</button>
                 <button onclick="editItem('${type}', ${item.id})">Edit</button>
                 <button onclick="deleteItem('${type}', ${item.id})">Delete</button>
@@ -75,21 +74,24 @@ async function viewItem(type, id) {
 
 function showCourseForm() {
     document.getElementById("form-title").textContent = "Add New Course";
-    showForm("courses", "POST");
+    showFormCourseHelper("courses", "POST");
 }
 
 function showStudentForm() {
     document.getElementById("form-title").textContent = "Add New Student";
-    showForm("students", "POST");
+    showFormStudentHelper("students", "POST");
 }
 
-function showForm(type, method, id = null) {
+function showFormCourseHelper(type, method, id = null) {
+    let courseInput = document.getElementById("courseId");
+    courseInput.style.display = "none";
     document.getElementById("form-container").style.display = "flex";
     document.getElementById("name").value = "";
 
     if (method === "PATCH" || method === "PUT") {
         fetchData(`${type}/${id}`).then(data => {
             document.getElementById("name").value = data.name;
+            
         });
     }
 
@@ -103,10 +105,47 @@ function showForm(type, method, id = null) {
     };
 }
 
+function showFormStudentHelper(type, method, id = null) {
+    const courseInput = document.getElementById("courseId");
+    courseInput.style.display = "inline";
+    document.getElementById("form-container").style.display = "flex"; 
+    document.getElementById("name").value = ""; 
+    courseInput.value = ""; 
+
+    if (method === "PATCH" || method === "PUT") {
+        fetchData(`${type}/${id}`).then(data => {
+            document.getElementById("name").value = data.name; 
+            courseInput.value = data.course_id || ""; 
+        });
+    }
+    document.getElementById("submit-btn").onclick = async () => {
+        const name = document.getElementById("name").value; 
+        const courseId = courseInput.value; 
+
+        if (!name || !courseId) {
+            alert("Both Name and Course ID are required!");
+            return;
+        }
+
+        const endpoint = id ? `${type}/${id}` : type;
+        const payload = { name, course_id: courseId };
+
+        await sendData(endpoint, method, payload);
+
+        document.getElementById("form-container").style.display = "none";
+        showList(type);
+    };
+}
+
 async function editItem(type, id) {
     const method = type === "courses" ? "PATCH" : "PUT"; // PATCH for courses, PUT for students
     document.getElementById("form-title").textContent = `Edit ${type.slice(0, -1)}`;
-    showForm(type, method, id);
+    if (type === "students"){
+        showFormStudentHelper(type, method, id);
+    }
+    else if (type === "courses"){
+        showFormCourseHelper(type, method, id);
+    }
 }
 
 async function deleteItem(type, id) {
